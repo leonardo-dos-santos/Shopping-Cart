@@ -5,6 +5,8 @@
   padding: 0 1rem;
   box-sizing: border-box;
   min-height: 90vh;
+  background-color: #f8f9fa;
+  background-image: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
 }
 
 .empty-cart {
@@ -30,18 +32,23 @@
 
 .continue-shopping {
   display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background-color: #4a69bd;
+  margin-top: 25px;
+  padding: 12px 24px;
+  background-color: #2a6dd8;
   color: white;
   text-decoration: none;
-  border-radius: 4px;
-  font-weight: 500;
-  transition: background-color 0.3s;
+  font-weight: bold;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(42, 109, 216, 0.3);
+  transition: all 0.3s ease;
+  font-size: 16px;
+  letter-spacing: 0.5px;
 }
 
 .continue-shopping:hover {
-  background-color: #3c55a5;
+  background-color: #1a5dc8;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(42, 109, 216, 0.4);
 }
 
 .cart-items {
@@ -70,12 +77,19 @@
 }
 
 .cart-item-image {
-  width: 140px;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-right: 25px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  border-radius: 12px;
+  margin-right: 30px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background-color: white;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.cart-item-image:hover {
+  transform: scale(1.05);
 }
 
 .cart-item-details {
@@ -116,58 +130,114 @@
 .quantity-control {
   display: flex;
   align-items: center;
-  background-color: #f5f8ff;
-  border-radius: 30px;
-  padding: 5px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background-color: var(--color-neutral-100);
+  border-radius: var(--radius-full);
+  padding: var(--space-xs) var(--space-sm);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: var(--space-md);
+  width: fit-content;
 }
 
 .quantity-btn {
-  background-color: #2a6dd8;
+  background-color: var(--color-primary);
   color: white;
   border: none;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   font-size: 18px;
+  font-weight: 600;
   border-radius: 50%;
-  transition: all 0.2s ease;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
 }
 
 .quantity-btn:hover {
-  background-color: #1a5dc8;
-  transform: scale(1.05);
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.quantity-btn:active {
+  transform: translateY(0);
+}
+
+.quantity-btn::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.3s ease-out;
+}
+
+.quantity-btn:active::after {
+  transform: scale(2);
+  opacity: 0;
+  transition: 0s;
 }
 
 .quantity-display {
-  margin: 0 15px;
-  font-weight: bold;
-  font-size: 16px;
-  min-width: 30px;
+  margin: 0 var(--space-lg);
+  font-weight: 600;
+  font-size: 20px;
+  min-width: 40px;
   text-align: center;
+  color: var(--color-neutral-800);
 }
 
 .remove-btn {
-  background-color: #ff4757;
+  background-color: var(--color-secondary);
   color: white;
   border: none;
-  padding: 10px 16px;
-  border-radius: 30px;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-full);
   cursor: pointer;
   font-size: 15px;
   font-weight: 600;
-  margin-top: 15px;
-  transition: all 0.2s ease;
-  box-shadow: 0 2px 8px rgba(255, 71, 87, 0.3);
+  margin-top: var(--space-md);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
 }
 
 .remove-btn:hover {
-  background-color: #ff2d40;
+  background-color: var(--color-secondary-dark);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 71, 87, 0.4);
+  box-shadow: var(--shadow-md);
+}
+
+.remove-btn:active {
+  transform: translateY(0);
+}
+
+.remove-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 0.4s ease-out;
+}
+
+.remove-btn:hover::before {
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 0;
 }
 
 .cart-summary {
