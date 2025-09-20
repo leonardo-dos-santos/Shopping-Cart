@@ -53,7 +53,7 @@ export function CartProvider({ children }) {
     setCartItems([]);
   };
 
-  // Calcular o valor total do carrinho
+  // Calculate the total sum of the cart items
   const cartTotal = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
 
   const value = {
