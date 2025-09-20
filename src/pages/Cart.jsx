@@ -58,12 +58,12 @@ function Cart() {
 
   return (
     <div className="cart-container">
-      <h1>Seu Carrinho</h1>
+      <h1>Your Shopping</h1>
       
       {cart && cart.length === 0 ? (
         <div className="empty-cart">
-          <p>Seu carrinho está vazio</p>
-          <Link to="/shop" className="continue-shopping">Continuar Comprando</Link>
+          <p>Your cart is empty</p>
+          <Link to="/shop" className="continue-shopping">Continue Shopping</Link>
         </div>
       ) : (
         <>
